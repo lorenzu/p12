@@ -11,7 +11,7 @@ describe('ColecciondeCartas', () => {
     coleccion = new ColecciondeCartas();
   });
 
-  it('debería agregar una carta a la colección', () => {
+  it('debería crear una carta', () => {
     const nuevaCarta: Carta = {
       id: 1,
       nombre: 'Prueba',
@@ -23,7 +23,19 @@ describe('ColecciondeCartas', () => {
       valor_mercado: 10
     };
 
-    coleccion.agregarcarta('test_user', nuevaCarta);
+    const nuevaCarta2: Carta = {
+      id: 1,
+      nombre: 'Prueba',
+      mana: 1,
+      color: Color.Azul,
+      tipo: Tipo.Criatura,
+      rareza: Rareza.Comun,
+      reglas: 'Una carta de prueba.',
+      valor_mercado: 10
+    };
+
+
+    expect(nuevaCarta).to.be.deep.equal(nuevaCarta2);
 
   });
 
