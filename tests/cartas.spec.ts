@@ -100,9 +100,41 @@ describe('Asynchronous function AgregarCarta y ElminarCarta tests', () => {
     return coleccion.agregarcarta('test_user', nuevaCarta).then((data) => {
       expect(data).to.be.equal('La carta se ha agregado');
     });
+    
   
 
   });
+  it('debería agregar otra carta a la colección', () => {
+    const nuevaCarta: Carta = {
+      id: 2,
+      nombre: 'Prueba',
+      mana: 1,
+      color: Color.Azul,
+      tipo: Tipo.Criatura,
+      rareza: Rareza.Comun,
+      reglas: 'Una carta de prueba.',
+      valor_mercado: 10
+    };
+    return coleccion.agregarcarta('test_user', nuevaCarta).then((data) => {
+      expect(data).to.be.equal('La carta se ha agregado');
+    });
+  });
+  it('debería dar un error al agregar una carta a la colección', () => {
+    const nuevaCarta: Carta = {
+      id: 1,
+      nombre: 'Prueba',
+      mana: 1,
+      color: Color.Azul,
+      tipo: Tipo.Criatura,
+      rareza: Rareza.Comun,
+      reglas: 'Una carta de prueba.',
+      valor_mercado: 10
+    };
+    return coleccion.agregarcarta('test_user', nuevaCarta).catch((error) => {
+      expect(error).to.be.equal('La carta se ha agregado');
+    });
+  });
+
   it('debería eliminar una carta a la colección', () => {
     const nuevaCarta: Carta = {
       id: 1,
@@ -118,5 +150,21 @@ describe('Asynchronous function AgregarCarta y ElminarCarta tests', () => {
       expect(data).to.be.equal('La carta se ha borrado');
     });
 
+    
 });
+    it('debería dar error al eliminar una carta a la colección', () => {
+      const nuevaCarta: Carta = {
+        id: 1,
+        nombre: 'Prueba',
+        mana: 1,
+        color: Color.Azul,
+        tipo: Tipo.Criatura,
+        rareza: Rareza.Comun,
+        reglas: 'Una carta de prueba.',
+        valor_mercado: 10
+      };
+      return coleccion.eliminarcarta('test_user', 10).catch((err) => {
+        expect(err).to.be.equal('La carta no se ha podido borrar');
+      });
+    });
 });

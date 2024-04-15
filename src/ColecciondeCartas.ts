@@ -49,7 +49,7 @@ export class ColecciondeCartas {
     const userDirectory = checkUserDirectory(usuario);
     const filePath = userDirectory + id + '.json';
     return new Promise<string>((resolve, reject) => {
-      fs.access(userDirectory, fs.constants.R_OK, (err) => {
+      fs.access(filePath, fs.constants.R_OK, (err) => {
         if(err){
           reject(`La carta no se ha podido borrar`)
         } else {
